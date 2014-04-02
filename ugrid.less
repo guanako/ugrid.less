@@ -1,0 +1,95 @@
+/*
+ * Rmx's µGrid, version 1.0.0
+ *
+ * Copyright (C) 2013-2014 Max Ruman <max.ruman@guanako.be>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, see
+ * <http://www.gnu.org/licenses/>.
+ */
+
+@ug-direction:   ltr;
+@ug-size-small:  320px;
+@ug-size-medium: 640px;
+@ug-size-large:  960px;
+@ug-size-xlarge: 1680px;
+
+.ug-size(@size, @on-size-min) when (@size > 0) {
+	@media only screen and (min-width: @on-size-min) {
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-khtml-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		display: inline-block;
+		vertical-align: top;
+		width: @size * 100%;
+	}
+}
+
+.ug-size(@size, @on-size-min) when (@size = 0) {
+	@media only screen and (min-width: @on-size-min) {
+		display: none;
+	}
+}
+
+.ug-size(@size) {
+	.ug-size(@size, 0);
+}
+
+.ug-hide(@on-size-min) {
+	.ug-size(0, @on-size-min);
+}
+
+.ug-hide() {
+	.ug-size(0, 0);
+}
+
+.ug-push(@offset, @on-size-min) when (@offset > 0) {
+	@media only screen and (min-width: @on-size-min) {
+		margin-left: @offset * 100%;
+	}
+}
+
+.ug-push(@offset) {
+	.ug-push(@offset, 0);
+}
+
+.ug-offset(@offset, @on-size-min) {
+	.ug-push(@offset, @on-size-min);
+}
+
+.ug-offset(@offset) {
+	.ug-offset(@offset, 0);
+}
+
+.ug-row-reverse(@on-size-min) when (@ug-direction = ltr) {
+	@media only screen and (min-width: @on-size-min) {
+		direction: rtl;
+		> * {
+			direction: ltr;
+		}
+	}
+}
+
+.ug-row-reverse(@on-size-min) when (@ug-direction = rtl) {
+	@media only screen and (min-width: @on-size-min) {
+		direction: ltr;
+		> * {
+			direction: rtl;
+		}
+	}
+}
+
+.ug-row-reverse() {
+	.ug-row-reverse(0);
+}

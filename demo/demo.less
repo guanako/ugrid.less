@@ -1,0 +1,34 @@
+@import url("../ugrid.less");
+
+.grid {
+	margin-bottom: 2rem;
+}
+
+.grid-2 {
+	.ug-row-reverse();
+}
+
+.cell {
+	height: 4rem;
+	background-color: #ddd;
+}
+
+.cell-1 {
+	background-color: #fdd;
+	.ug-size(6/12, @ug-size-small);
+	.ug-size(4/12, @ug-size-medium);
+	.ug-size(3/12, @ug-size-large);
+	.ug-push(1/12, @ug-size-large);
+}
+
+.cell-2 {
+	background-color: #dfd;
+	.ug-hide();
+	.ug-size(4/12, @ug-size-medium);
+}
+
+.cell-3 {
+	background-color: #ddf;
+	.ug-size(6/12, @ug-size-small);
+	.ug-size(4/12, @ug-size-medium);
+}
